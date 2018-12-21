@@ -1,0 +1,28 @@
+version: '3'
+
+services:
+  mongodb:
+    image: mongo
+    ports:
+      - "27017:27017"
+
+  mongo-seed:
+    build: ./server/mongo-seed
+    links:
+      - mongodb
+
+  server:
+    build: ./server
+    links:
+      - mongodb
+    ports: 
+      - "8080:8080"
+
+  client:
+    build: ./client
+    links:
+      - server
+    ports:
+      - "8181:80"
+
+    
