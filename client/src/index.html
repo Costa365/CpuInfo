@@ -6,6 +6,9 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="lib/bootstrap/css/bootstrap.min.css">
 	<link rel="stylesheet" href="css/site.min.css">
+	<link rel="stylesheet" href="https://unpkg.com/ag-grid-community/dist/styles/ag-grid.css">
+  	<link rel="stylesheet" href="https://unpkg.com/ag-grid-community/dist/styles/ag-theme-balham.css">
+	<script src="https://unpkg.com/ag-grid-community/dist/ag-grid-community.min.noStyle.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	<script src="lib/bootstrap/js/bootstrap.min.js"></script>
 	<script src="js/site.js"></script>
@@ -33,59 +36,11 @@
 				</form>
 			</div>
 		</div>
+		<p></p>
+		<div id="cpu-info-results-grid" style="display: none;">
+			<div id="resultsGrid" style="height: 507px;width:1150px;" class="ag-theme-balham"></div>
+		</div>
 		<hr />
-		<div id="cpu-info-results" style="display: none;">
-			<dl class="dl-horizontal">
-				<dt>
-					Name
-				</dt>
-				<dd>
-					<div id="cpuname" />
-				</dd>
-				<dt>
-					Cores
-				</dt>
-				<dd>
-					<div id="cpucores" />
-				</dd>
-				<dt>
-					Type
-				</dt>
-				<dd>
-					<div id="cputype" />
-				</dd>
-				<dt>
-					CPU Mark
-				</dt>
-				<dd>
-					<div id="cpumark" />
-				</dd>
-				<dt>
-					Single Thread Mark
-				</dt>
-				<dd>
-					<div id="cpusingle" />
-				<dt>
-					TDP
-				</dt>
-				<dd>
-					<div id="cputdp" />
-				</dd>
-				<dt>
-					Power Performance
-				</dt>
-				<dd>
-					<div id="cpuperf" />
-				</dd>
-				<dt>
-					Release Date
-				</dt>
-				<dd>
-					<div id="cpureleasedate" />
-				</dd>
-			</dl>
-			<hr />
-		</div>	
 		<div>
 			<img src="images/amd_intel3.png" width="334">
 		</div>
