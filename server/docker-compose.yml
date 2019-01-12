@@ -1,0 +1,55 @@
+version: '3'
+
+services:
+  mongodb:
+    image: mongo
+    networks:
+      - internal
+    ports:
+      - "27017:27017"
+
+  mongo-seed:
+    build: ./backend/mongo-seed
+    networks:
+      - internal
+
+  backend:
+    build: ./backend
+    networks:
+      - internal
+    expose: 
+      - "8080"
+
+  frontend:
+    build: ./frontend
+    networks:
+      - internal
+    restart: always
+    expose:
+      - "80"
+
+  nginx: 
+    image: nginx:latest
+    container_name: production_nginx
+    networks:
+      - internal
+      - external
+    restart: always
+    volumes:
+      - ./data/nginx:/etc/nginx/conf.d
+      - ./data/certbot/conf:/etc/letsencrypt
+      - ./data/certbot/www:/var/www/certbot
+    ports:
+      - "80:80"
+      - "443:443"
+
+  certbot:
+    image: certbot/certbot
+    volumes:
+      - ./data/certbot/conf:/etc/letsencrypt
+      - ./data/certbot/www:/var/www/certbot
+    entrypoint: "/bin/sh -c 'trap exit TERM; while :; do certbot renew; sleep 12h & wait $${!}; done;'"    
+
+networks:
+  internal:
+  external:
