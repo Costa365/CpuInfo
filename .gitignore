@@ -32,3 +32,4 @@ binary/
 /dist/
 /nbdist/
 /.nb-gradle/
+data/certbot/conf/.certbot.lock
